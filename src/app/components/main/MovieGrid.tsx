@@ -1,26 +1,32 @@
 
 'use client'; // Añade esta línea para marcarlo como un componente cliente
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import useMovie from '../../hooks/useMovie';
 import MovieCard from '../movieGrid/MovieCard';
 
 const MovieGrid: React.FC = () => {
     const {movies, moreMovies, verMas} = useMovie()
+
     return (
-        <InfiniteScroll
-        className="flex flex-wrap justify-center p-0"
-        dataLength={movies.length}
-        next={moreMovies}
-        hasMore={verMas}
-        loader={<h4>Cargando....</h4>}
-        endMessage={<h4>No hay mas peliculas para recomendar</h4>}
+        <div
+            className="bg-black h-[500px]"
         >
-        {movies.map((movie) => (
-                <MovieCard key={movie.id} movie={movie}/>
-            ))}
-        </InfiniteScroll>
+            <InfiniteScroll
+                className="flex flex-wrap justify-center p-0 overflow-y-scroll h-full bg-black"
+                dataLength={movies.length}
+                next={moreMovies}
+                hasMore={verMas}
+                loader={<h4>Cargando....</h4>}
+                endMessage={<h4>No hay mas peliculas para recomendar</h4>}
+                >
+                {movies.map((movie) => (
+                        <MovieCard key={movie.id} movie={movie}/>
+                    ))}
+            </InfiniteScroll>
+        </div>
+        
     );
   };
   
