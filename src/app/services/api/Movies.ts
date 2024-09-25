@@ -1,4 +1,4 @@
-import { API_POPULAR, API_KEY } from "@/app/config/apiConfig";
+import { API_POPULAR, API_KEY, TRENDING_DAY, TRENDING_WEEK } from "@/app/config/apiConfig";
 
 
 export const fetchAllMovies = async (page: number) => {
@@ -17,7 +17,7 @@ export const fetchAllMovies = async (page: number) => {
   }
 
   const data = await response.json();
-  return data.results; // Devuelve solo los resultados
+  return {datos: data.results, this_page: data.page, total_pages: data.total_pages}; // Devuelve solo los resultados
 };
 
 export const fetchMostPopular = async () => {
@@ -39,7 +39,7 @@ export const fetchMostPopular = async () => {
     return data.results[0]; // Devuelve solo los resultados
 };
 
-export const fetchTrendingMoviesDay = async () => {
+export const fetchTrendingMoviesDay = async (page: number) => {
     const options = {
       method: 'GET',
       headers: {
@@ -48,17 +48,17 @@ export const fetchTrendingMoviesDay = async () => {
       },
     };
   
-    const response = await fetch(API_POPULAR, options);
+    const response = await fetch(TRENDING_DAY+page, options);
   
     if (!response.ok) {
       throw new Error('Error fetching movie data'); // Manejo básico de errores
     }
   
     const data = await response.json();
-    return data.results; // Devuelve solo los resultados
+    return {datos: data.results, this_page: data.page, total_pages: data.total_pages}; // Devuelve solo los resultados
 };
 
-export const fetchTrendingMoviesWeek = async () => {
+export const fetchTrendingMoviesWeek = async (page: number) => {
     const options = {
       method: 'GET',
       headers: {
@@ -67,12 +67,12 @@ export const fetchTrendingMoviesWeek = async () => {
       },
     };
   
-    const response = await fetch(API_POPULAR, options);
+    const response = await fetch(TRENDING_WEEK+page, options);
   
     if (!response.ok) {
       throw new Error('Error fetching movie data'); // Manejo básico de errores
     }
   
     const data = await response.json();
-    return data.results; // Devuelve solo los resultados
+    return {datos: data.results, this_page: data.page, total_pages: data.total_pages}; // Devuelve solo los resultados
 };

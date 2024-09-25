@@ -7,6 +7,6 @@ const API_BASE_URL = 'https://api.themoviedb.org/3/'; // URL de la API
 const language = 'language=es-EC';
 
 export const API_POPULAR = API_BASE_URL+'movie/popular?'+language+'&page=';
-export const TRENDING_DAY = API_BASE_URL+'trending/movie/day?'+language;
-export const TRENDING_WEEK = API_BASE_URL+'trending/movie/week?'+language;
+export const TRENDING_DAY = API_BASE_URL+'trending/movie/day?'+language+'&page=';
+export const TRENDING_WEEK = API_BASE_URL+'trending/movie/week?'+language+'&page=';
 export const IMG_BASE_URL = 'https://image.tmdb.org/t/p/'
