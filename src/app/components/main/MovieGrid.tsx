@@ -11,7 +11,7 @@ const MovieGrid: React.FC = () => {
 
     return (
         <div
-            className="bg-black h-[500px]"
+            className="bg-black flex flex-wrap justify-center"
         >
             <InfiniteScroll
                 className="flex flex-wrap justify-center p-0 overflow-y-scroll h-full bg-black"

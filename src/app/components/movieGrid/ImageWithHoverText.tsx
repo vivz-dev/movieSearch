@@ -22,7 +22,7 @@ const ImageWithHoverText: React.FC<ImageHoverProps> = ({
     };
   
     return (
-      <div className="relative w-[300px] h-[169px]" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+      <div className="relative w-[350px] h-[169px]" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
         <img
           src={imageUrl}
           alt={altText}
